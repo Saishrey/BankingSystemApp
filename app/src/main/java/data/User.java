@@ -1,5 +1,6 @@
 package data;
 
+// Stores user data
 public class User {
     private String name;
     private String accountNumber;
