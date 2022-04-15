@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:minHeight="88dp"
+    android:orientation="horizontal"
+    android:id="@+id/list_item_id">
+
+    <ImageView
+        android:id="@+id/user_icon_image_view"
+        android:src="@drawable/male"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:transitionName="dp_transition"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:background="@color/white"
+        android:minHeight="88dp" >
+
+        <LinearLayout
+            android:id="@+id/text_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/user_name_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:paddingBottom="3dp"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/text_color"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="Shreyas Naik">
+            </TextView>
+
+            <TextView
+                android:id="@+id/balance_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:paddingTop="3dp"
+                android:textAppearance="?android:textAppearanceSearchResultSubtitle"
+                android:textColor="@color/lighter_grey"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle=""
+                tools:text="Balance: ₹ 9999999999">
+            </TextView>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/notification_image_view"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_baseline_info_24"
+            app:tint="@color/green" />
+
+    </RelativeLayout>
+
+</LinearLayout>

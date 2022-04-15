@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.basicbankingapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name="UI.AmountInput"
+            android:exported="false"
+            android:theme="@style/AppTheme.AmountInput"
+            android:screenOrientation="portrait"
+            android:parentActivityName="UI.Dashboard">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="UI.Dashboard" />
+        </activity>
+
+        <activity
+            android:name="UI.Dashboard"
+            android:label="Home">
+        </activity>
+        <activity
+            android:name="UI.UsersActivity"
+            android:label="@string/users"
+            android:noHistory="true">
+        </activity>
+        <activity
+            android:name="UI.TransactionActivity"
+            android:label="@string/transactions">
+
+        </activity>
+        <activity
+            android:name="UI.MainActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="UI.SelectUserActivity"
+            android:label="@string/select_user"
+            android:parentActivityName="UI.UsersActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="UI.UsersActivity" />
+        </activity>
+        <activity
+            android:name="UI.UserInfoActivity"
+            android:label="@string/info"
+            android:parentActivityName="UI.UsersActivity"
+            android:theme="@style/AppTheme">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="UI.Dashboard" />
+        </activity>
+    </application>
+
+</manifest>
