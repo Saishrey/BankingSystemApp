@@ -1,3 +1,3 @@
 # BankingSystemApp
 
-<img src="Screenshots/SplashScreen.jpg" width="100">
+<img src="Screenshots/SplashScreen.jpg" width="600">
