@@ -20,6 +20,10 @@ import com.example.android.basicbankingapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import database.TransactionContract.TransactionEntry;
 import database.TransactionHelper;
 import database.UserHelper;
@@ -29,6 +33,8 @@ public class AmountInput extends AppCompatActivity {
     private String toAccountNo;
     private String fromAccountNo;
     private int transferAmount = 0;
+
+    private String date_and_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +94,11 @@ public class AmountInput extends AppCompatActivity {
                         Toast.makeText(AmountInput.this, "Payment must be at most ₹1,00,000", Toast.LENGTH_LONG).show();
                     }
                     else {
+                        Calendar calendar = Calendar.getInstance();
+                        String dateString = "dd-MMM-yyyy, hh:mm a";
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateString);
+                        date_and_time = simpleDateFormat.format(calendar.getTime());
+
                         transferAmount = amount;
                         int fromBalance = extras.getInt("FROM_BALANCE");
                         int toBalance = extras.getInt("TO_BALANCE");
@@ -113,7 +124,7 @@ public class AmountInput extends AppCompatActivity {
         new UserHelper(this).updateAmount(fromAccountNo, fromBalance);
         new UserHelper(this).updateAmount(toAccountNo, toBalance);
 
-        new TransactionHelper(this).insertTransferData(fromAccountNo, toAccountNo, transferAmount, 1);
+        new TransactionHelper(this).insertTransferData(fromAccountNo, toAccountNo, transferAmount, 1, date_and_time);
     }
 
     @Override
@@ -123,6 +134,11 @@ public class AmountInput extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        Calendar calendar = Calendar.getInstance();
+                        String dateString = "dd-MMM-yyyy, hh:mm a";
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateString);
+                        date_and_time = simpleDateFormat.format(calendar.getTime());
+
                         // Transactions Cancelled
                         TransactionHelper dbHelper = new TransactionHelper(AmountInput.this);
                         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -132,6 +148,7 @@ public class AmountInput extends AppCompatActivity {
                         values.put(TransactionEntry.COLUMN_TO_ACCOUNT_NO, toAccountNo);
                         values.put(TransactionEntry.COLUMN_STATUS, 0);
                         values.put(TransactionEntry.COLUMN_AMOUNT, 0);
+                        values.put(TransactionEntry.COLUMN_DATE_TIME, date_and_time);
 
                         db.insert(TransactionEntry.TABLE_NAME, null, values);
 

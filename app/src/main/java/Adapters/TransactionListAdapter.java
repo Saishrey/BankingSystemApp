@@ -21,7 +21,9 @@ import androidx.annotation.Nullable;
 
 import com.example.android.basicbankingapp.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import UI.TransactionsFragment;
 import data.Transaction;
@@ -109,6 +111,22 @@ public class TransactionListAdapter extends BaseAdapter {
             statusImageView.setImageResource(R.drawable.ic_baseline_check_24);
             statusImageView.setColorFilter(Color.GREEN);
         }
+
+        Calendar calendar = Calendar.getInstance();
+        String dateString = "dd-MMM-yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateString);
+        String currentDate = simpleDateFormat.format(calendar.getTime());
+
+        String datetime;
+        if(currentTransaction.getDatetime().split(",")[0].equals(currentDate)) {
+            datetime = currentTransaction.getDatetime().split(",")[1];
+        }
+        else {
+            datetime = currentTransaction.getDatetime().split(",")[0];
+        }
+
+        TextView dateAndTimeTextView = (TextView) convertView.findViewById(R.id.date_and_time_text_view);
+        dateAndTimeTextView.setText(datetime);
 
         return convertView;
     }

@@ -15,5 +15,6 @@ public class TransactionContract {
         public final static String COLUMN_TO_ACCOUNT_NO = "to_account";
         public final static String COLUMN_AMOUNT = "amount";
         public final static String COLUMN_STATUS = "status";
+        public final static String COLUMN_DATE_TIME = "date_and_time";
     }
 }

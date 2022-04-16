@@ -9,8 +9,9 @@ public class Transaction {
     private int toGender;
     private int amountTransferred;
     private int status;
+    private String datetime;
 
-    public Transaction(String fromAccount, String fromName, int fromGender, String toAccount, String toName, int toGender, int amountTransferred, int status) {
+    public Transaction(String fromAccount, String fromName, int fromGender, String toAccount, String toName, int toGender, int amountTransferred, int status, String datetime) {
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
         this.amountTransferred = amountTransferred;
@@ -19,6 +20,7 @@ public class Transaction {
         this.fromGender = fromGender;
         this.toName = toName;
         this.toGender = toGender;
+        this.datetime = datetime;
     }
 
     public String getFromAccount() {
@@ -67,6 +69,10 @@ public class Transaction {
 
     public String getToName() {
         return toName;
+    }
+
+    public String getDatetime() {
+        return datetime;
     }
 }
 

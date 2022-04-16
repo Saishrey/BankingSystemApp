@@ -62,12 +62,14 @@ public class TransactionsFragment extends Fragment {
         int toAccountColumnIndex = cursor.getColumnIndex(TransactionEntry.COLUMN_TO_ACCOUNT_NO);
         int amountColumnIndex = cursor.getColumnIndex(TransactionEntry.COLUMN_AMOUNT);
         int statusColumnIndex = cursor.getColumnIndex(TransactionEntry.COLUMN_STATUS);
+        int datetimeColumnIndex = cursor.getColumnIndex(TransactionEntry.COLUMN_DATE_TIME);
 
         while (cursor.moveToNext()){
             String fromAccount = cursor.getString(fromAccountNoColumnIndex);
             String toAccount = cursor.getString(toAccountColumnIndex);
             int amount = cursor.getInt(amountColumnIndex);
             int status = cursor.getInt(statusColumnIndex);
+            String datetime = cursor.getString(datetimeColumnIndex);
 
             Cursor fromCursor = new UserHelper(this).readParticularData(fromAccount);
             fromCursor.moveToNext();
@@ -88,7 +90,7 @@ public class TransactionsFragment extends Fragment {
             int toGender = toCursor.getInt(toGenderColumnIndex);
 
             // Display the values from each column of the current row in the cursor in the TextView
-            transactionArrayList.add(new Transaction(fromAccount, fromName, fromGender, toAccount, toName, toGender, amount, status));
+            transactionArrayList.add(new Transaction(fromAccount, fromName, fromGender, toAccount, toName, toGender, amount, status, datetime));
         }
 
         return transactionArrayList;

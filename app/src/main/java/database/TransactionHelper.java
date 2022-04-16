@@ -42,6 +42,7 @@ public class TransactionHelper extends SQLiteOpenHelper {
                 + TransactionEntry.TRANSACTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + TransactionEntry.COLUMN_FROM_ACCOUNT_NO + " VARCHAR, "
                 + TransactionEntry.COLUMN_TO_ACCOUNT_NO + " VARCHAR, "
+                + TransactionEntry.COLUMN_DATE_TIME + " VARCHAR, "
                 + TransactionEntry.COLUMN_AMOUNT + " INTEGER, "
                 + TransactionEntry.COLUMN_STATUS + " INTEGER, "
                 + "FOREIGN KEY (" + TransactionEntry.COLUMN_FROM_ACCOUNT_NO + ") REFERENCES " + UserEntry.TABLE_NAME + "(" + UserEntry.COLUMN_USER_ACCOUNT_NUMBER + "), "
@@ -49,11 +50,6 @@ public class TransactionHelper extends SQLiteOpenHelper {
 
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_TRANSACTION_TABLE);
-
-        String inputColumns = "(" + TransactionEntry.COLUMN_FROM_ACCOUNT_NO
-                + ", " + TransactionEntry.COLUMN_TO_ACCOUNT_NO
-                + ", " + TransactionEntry.COLUMN_AMOUNT
-                + ", " + TransactionEntry.COLUMN_STATUS + ")";
 
     }
 
@@ -66,7 +62,7 @@ public class TransactionHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void insertTransferData (String fromAccount, String toAccount, int amount, int status) {
+    public void insertTransferData (String fromAccount, String toAccount, int amount, int status, String datetime) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -74,6 +70,7 @@ public class TransactionHelper extends SQLiteOpenHelper {
         contentValues.put(TransactionEntry.COLUMN_TO_ACCOUNT_NO, toAccount);
         contentValues.put(TransactionEntry.COLUMN_AMOUNT, amount);
         contentValues.put(TransactionEntry.COLUMN_STATUS, status);
+        contentValues.put(TransactionEntry.COLUMN_DATE_TIME, datetime);
 
         db.insert(TransactionEntry.TABLE_NAME, null, contentValues);
 

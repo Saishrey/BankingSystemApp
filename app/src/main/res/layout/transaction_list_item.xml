@@ -131,4 +131,15 @@
 
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:id="@+id/date_and_time_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="1-Jan-2022, 12:00 AM"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:paddingRight="20sp"
+        android:textAlignment="textEnd"
+        tools:ignore="NestedWeights" />
+
 </LinearLayout>
