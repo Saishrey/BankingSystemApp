@@ -1,4 +1,4 @@
 # BankingSystemApp
 
-<h1>Splash Screen</h1>
+<h2>Splash Screen</h2>
 <img src="Screenshots/SplashScreen.jpg" width="300">
